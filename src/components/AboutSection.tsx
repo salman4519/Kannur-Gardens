@@ -22,32 +22,32 @@ const AboutSection = () => {
           </div>
 
           {/* Text */}
-          <div className={`transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}>
+          <div className={`transition-all duration-1000 delay-200 text-center lg:text-left ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}>
             <p className="font-body text-sm tracking-[0.3em] uppercase text-primary mb-4">
               About Us
             </p>
-            <h2 className="section-title mb-6">
+            <h2 className="section-title mb-6 mx-auto lg:mx-0">
               Where Dreams Find Their Perfect Setting
             </h2>
-            <div className="gold-separator mb-8 mx-0" />
-            <p className="section-subtitle mb-6">
-              Kannur Gardens is a luxury wedding and event venue nestled in the heart of Kannur, Kerala.
-              With sprawling indoor and outdoor spaces, we offer the perfect canvas for traditional ceremonies,
-              modern celebrations, and destination weddings alike.
+            <div className="gold-separator mb-8 lg:mx-0" />
+            <p className="section-subtitle mb-6 mx-auto lg:mx-0">
+              Kannur Gardens is one of the most sought-after wedding venues in Kannur, offering a perfect combination of luxury, space, and natural beauty. Designed for both intimate ceremonies and large-scale celebrations, our venue features an elegant AC banquet hall, a beautifully landscaped garden lawn, and a grand customised event area.
             </p>
-            <p className="section-subtitle mb-8">
-              Our venue combines the natural beauty of Kerala's tropical landscape with world-class
-              amenities, creating an unforgettable experience for you and your guests.
+            <p className="section-subtitle mb-8 mx-auto lg:mx-0">
+              Whether you are planning a traditional wedding, a modern reception, or a destination-style celebration, Kannur Gardens provides a stunning backdrop, premium facilities, and a seamless event experience in the heart of Kerala.
             </p>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-4">
               {[
-                { number: "500+", label: "Events Hosted" },
-                { number: "1000", label: "Guest Capacity" },
-                { number: "5★", label: "Rated Venue" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center lg:text-left">
-                  <p className="font-heading text-2xl md:text-3xl text-primary font-medium">{stat.number}</p>
-                  <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mt-1">{stat.label}</p>
+                { label: "Largest Venue in Kannur" },
+                { label: "Indoor & Outdoor Options" },
+                { label: "Parking for 200 Cars" },
+                { label: "Traditional & Modern" },
+                { label: "Easy Town Access" },
+                { label: "Premium Facilities" },
+              ].map((feature) => (
+                <div key={feature.label} className="flex items-center gap-2 justify-center lg:justify-start">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full shrink-0" />
+                  <p className="font-body text-xs md:text-sm tracking-wide uppercase text-foreground/80">{feature.label}</p>
                 </div>
               ))}
             </div>

@@ -6,22 +6,22 @@ import lotusPavilion from "@/assets/lotus-pavilion.jpg";
 
 const spaces = [
   {
-    name: "Orchid Hall",
+    name: "The Orchid Hall",
     image: orchidHall,
-    capacity: "Up to 250 Guests",
-    description: "An elegant AC banquet hall with crystal chandeliers, perfect for intimate wedding receptions and formal celebrations.",
+    capacity: "AC Banquet Hall (250 Guests)",
+    description: "A fully air-conditioned hall perfect for engagement ceremonies, wedding receptions, and intimate weddings in Kannur. Features an elegant stage space and dedicated dining area.",
   },
   {
     name: "Jasmine Lawn",
     image: jasmineLawn,
-    capacity: "600–800 Guests",
-    description: "A sprawling outdoor garden venue under the open sky, ideal for grand wedding ceremonies surrounded by tropical beauty.",
+    capacity: "Outdoor Garden (600–800 Guests)",
+    description: "A scenic open-air space ideal for day weddings, evening receptions, and magical under-the-stars celebrations. Perfect for Mehendi, Sangeet, and luxury evening parties.",
   },
   {
-    name: "Lotus Pavilion",
+    name: "The Lotus Pavilion",
     image: lotusPavilion,
-    capacity: "Up to 1000 Guests",
-    description: "A customisable grand event area that adapts to your vision — from traditional mandaps to modern stage setups.",
+    capacity: "Grand Event Area (Up to 1000 Guests)",
+    description: "A large customisable tent space designed for big fat Indian weddings and luxury stage setups. The ultimate destination for grand-scale celebrations.",
   },
 ];
 
@@ -46,9 +46,8 @@ const SpacesSection = () => {
           {spaces.map((space, i) => (
             <div
               key={space.name}
-              className={`luxury-card group transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
+              className={`luxury-card group transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
               style={{ transitionDelay: isVisible ? `${i * 200}ms` : "0ms" }}
             >
               {/* Image */}

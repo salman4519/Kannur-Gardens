@@ -1,4 +1,5 @@
-import { Phone, MessageCircle, CalendarDays } from "lucide-react";
+import { Phone, CalendarDays } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { motion } from "framer-motion";
 import heroImg from "@/assets/hero-wedding.jpg";
 
@@ -8,24 +9,24 @@ const HeroSection = () => {
       {/* Decorative accent */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-40" />
 
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left — Text Content */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 text-center lg:text-left">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-body text-xs md:text-sm tracking-[0.3em] uppercase text-primary mb-5"
+              className="font-body text-xs md:text-sm tracking-[0.3em] uppercase text-primary mb-4"
             >
-              Luxury Event Venue • Kannur, India
+              Luxury Event Venue • Kannur
             </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="font-heading text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium text-foreground leading-tight mb-6"
+              className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-foreground leading-tight mb-8"
             >
               Best Wedding Venue in Kannur for Grand &{" "}
               <span className="text-primary italic">Elegant</span> Celebrations
@@ -35,44 +36,44 @@ const HeroSection = () => {
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="origin-left w-20 h-[2px] bg-primary mb-6"
+              className="origin-left w-20 h-[2px] bg-primary mb-8 mx-auto lg:mx-0"
             />
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="font-body text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed mb-10"
+              className="font-body text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed mb-10 mx-auto lg:mx-0"
             >
-              Nestled amidst lush tropical gardens, Kannur Gardens offers an unparalleled backdrop
-              for your most cherished celebrations — where luxury meets natural beauty.
+              One of the most sought-after wedding venues in Kannur, offering a perfect combination
+              of luxury, space, and natural beauty.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="flex flex-col sm:flex-row items-start gap-3"
+              className="grid grid-cols-2 lg:flex lg:flex-row items-center lg:items-start gap-3 w-full max-w-md lg:max-w-none mx-auto lg:mx-0"
             >
               <a
-                href="tel:+919876543210"
-                className="inline-flex items-center gap-2.5 px-7 py-3 bg-primary text-primary-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-primary/90 transition-all duration-300"
+                href="tel:+919074771838"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary text-primary-foreground font-body text-xs sm:text-sm tracking-widest uppercase rounded-sm hover:bg-primary/90 transition-all duration-300 w-full lg:w-auto"
               >
                 <Phone className="w-4 h-4" />
                 Call Now
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919074771838?text=Hello!%20I%20am%20interested%20in%20knowing%20more%20about%20the%20services%20at%20Kannur%20Gardens."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-7 py-3 border border-border text-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-accent transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 border border-border text-foreground font-body text-xs sm:text-sm tracking-widest uppercase rounded-sm hover:bg-accent transition-all duration-300 w-full lg:w-auto"
               >
-                <MessageCircle className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4 fill-current" />
                 WhatsApp
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2.5 px-7 py-3 border border-border text-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-accent transition-all duration-300"
+                className="hidden lg:inline-flex items-center justify-center gap-2 px-6 py-3 border border-border text-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-accent transition-all duration-300"
               >
                 <CalendarDays className="w-4 h-4" />
                 Book Visit
@@ -101,7 +102,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

@@ -1,16 +1,30 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
-import logo from "@/assets/logo.jpeg";
+import { Menu, X, Phone, Instagram, Facebook } from "lucide-react";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import logo from "@/assets/logo.png";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileOpen]);
 
   const navLinks = [
     { label: "About", href: "#about" },
@@ -22,19 +36,22 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-[100] ${isMobileOpen
+        ? "bg-[#fdfbf7] border-none"
+        : "transition-all duration-300 " + (isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
-      }`}
+          : "bg-transparent border-transparent")
+        }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between h-24">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3">
-          <img src={logo} alt="Kannur Gardens" className="h-12 w-12 rounded-full object-cover" />
-          <span className={`font-heading text-xl tracking-wide transition-colors duration-500 ${
-            isScrolled ? "text-foreground" : "text-primary-foreground"
-          }`}>
+        <a href="#" className="flex items-center gap-3 md:gap-4 group relative z-[110]">
+          <img
+            src={logo}
+            alt="Kannur Gardens"
+            className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="font-heading text-xl md:text-3xl tracking-wide text-foreground">
             Kannur Gardens
           </span>
         </a>
@@ -45,16 +62,14 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className={`font-body text-sm tracking-widest uppercase transition-colors duration-300 hover:text-primary ${
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              }`}
+              className="font-body text-sm tracking-widest uppercase text-foreground hover:text-primary transition-colors duration-300"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="tel:+919876543210"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-body text-sm tracking-wide rounded-sm hover:bg-primary/90 transition-colors"
+            href="tel:+919074771838"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-primary/90 transition-all duration-300 shadow-sm"
           >
             <Phone className="w-3.5 h-3.5" />
             Call Now
@@ -64,36 +79,61 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className={`md:hidden transition-colors ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}
+          className="md:hidden p-2 text-foreground relative z-[110] focus:outline-none"
+          aria-label="Toggle Menu"
         >
-          {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileOpen && (
-        <div className="md:hidden bg-background/98 backdrop-blur-lg border-t border-border animate-fade-in">
-          <div className="px-6 py-8 flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className="font-body text-sm tracking-widest uppercase text-foreground hover:text-primary transition-colors"
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[90] bg-[#fdfbf7] md:hidden flex flex-col pt-24"
+          >
+            {/* Nav links centered */}
+            <div className="flex-1 flex flex-col items-center justify-center p-6 pb-20">
+              <div className="flex flex-col items-center gap-10">
+                {navLinks.map((link, i) => (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * (i + 1) }}
+                    onClick={() => setIsMobileOpen(false)}
+                    className="font-heading text-4xl text-foreground hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="mt-auto p-10 pb-20 space-y-8 bg-secondary/10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
               >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="tel:+919876543210"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-body text-sm tracking-wide rounded-sm"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              Call Now
-            </a>
-          </div>
-        </div>
-      )}
+                <a
+                  href="tel:+919074771838"
+                  className="flex items-center justify-center gap-3 w-full py-4 bg-primary text-primary-foreground font-body text-sm tracking-widest uppercase rounded-sm shadow-lg"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Now
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

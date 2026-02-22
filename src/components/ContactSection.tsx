@@ -8,8 +8,15 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder - would integrate with backend
-    alert("Thank you for your inquiry! We'll get back to you shortly.");
+
+    const message = `*New Wedding Inquiry*%0A%0A` +
+      `*Name:* ${formData.name}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*Phone:* ${formData.phone}%0A` +
+      `*Message:* ${formData.message}`;
+
+    window.open(`https://wa.me/919074771838?text=${message}`, "_blank");
+
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -30,9 +37,9 @@ const ContactSection = () => {
           <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
             <div className="space-y-8 mb-10">
               {[
-                { icon: MapPin, label: "Address", value: "Kannur Gardens, NH 66, Kannur, Kerala 670001, India" },
-                { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
-                { icon: Mail, label: "Email", value: "info@kannurgardens.com", href: "mailto:info@kannurgardens.com" },
+                { icon: MapPin, label: "Address", value: "Kannur Garden Luxury Event Venue, Thekilepeedika, Thazhe Chovva, Kannur, Kerala 670007 (Near South Railway Station)" },
+                { icon: Phone, label: "Phone", value: "+91 90747 71838", href: "tel:+919074771838" },
+                { icon: Mail, label: "Email", value: "kannurgardens@gmail.com", href: "mailto:kannurgardens@gmail.com" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -55,7 +62,7 @@ const ContactSection = () => {
             {/* Map */}
             <div className="rounded-sm overflow-hidden border border-border h-64">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124714.29242109997!2d75.26283945!3d11.8681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba422e32abf5c17%3A0x2baboref4805e6bb!2sKannur%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3904.54804614942!2d75.40147017505826!3d11.866876588356062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDUyJzAwLjgiTiA3NcKwMjQnMTQuNiJF!5e0!3m2!1sen!2sin!4v1771763579712!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

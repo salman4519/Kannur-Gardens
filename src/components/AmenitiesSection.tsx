@@ -2,14 +2,14 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Flower2, UtensilsCrossed, CalendarCheck, Car, Music, Camera, Sparkles, Shield } from "lucide-react";
 
 const amenities = [
-  { icon: Flower2, title: "In-House Decor", desc: "Bespoke floral arrangements and themed décor tailored to your vision." },
-  { icon: UtensilsCrossed, title: "Premium Catering", desc: "Multi-cuisine menus crafted by expert chefs for an unforgettable feast." },
-  { icon: CalendarCheck, title: "Event Planning", desc: "Dedicated event coordinators to ensure every detail is flawless." },
-  { icon: Car, title: "Valet Parking", desc: "Complimentary valet parking with spacious lots for all your guests." },
+  { icon: Flower2, title: "In-House Decor", desc: "Elegant, customizable setups with floral arrangements and themed styling to match your vision." },
+  { icon: UtensilsCrossed, title: "In-House Catering", desc: "A carefully curated multi-cuisine menu, crafted by expert chefs for a delightful dining experience." },
+  { icon: CalendarCheck, title: "In-House Event Planning", desc: "Dedicated team ensuring a seamless, stress-free celebration with meticulous attention to detail." },
+  { icon: Car, title: "Ample Parking", desc: "Spacious parking facilities accommodating up to 200 cars for your guests' convenience." },
   { icon: Music, title: "Sound & Lighting", desc: "State-of-the-art audio-visual systems for a spectacular celebration." },
   { icon: Camera, title: "Photography Spots", desc: "Curated scenic backdrops perfect for stunning wedding photography." },
   { icon: Sparkles, title: "Bridal Suite", desc: "Luxurious preparation rooms for the bride and groom's party." },
-  { icon: Shield, title: "Full Security", desc: "Professional security and crowd management for a worry-free event." },
+  { icon: Shield, title: "Easy Accessibility", desc: "Located in the heart of Kannur with easy access from town and railway station." },
 ];
 
 const AmenitiesSection = () => {
@@ -31,9 +31,8 @@ const AmenitiesSection = () => {
           {amenities.map((item, i) => (
             <div
               key={item.title}
-              className={`group p-8 text-center rounded-sm border border-border bg-card hover:bg-primary/5 transition-all duration-500 hover:-translate-y-1 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`group p-8 text-center rounded-sm border border-border bg-card hover:bg-primary/5 transition-all duration-500 hover:-translate-y-1 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: isVisible ? `${i * 100}ms` : "0ms" }}
             >
               <div className="w-14 h-14 mx-auto mb-5 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">

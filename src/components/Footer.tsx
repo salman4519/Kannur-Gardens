@@ -1,5 +1,5 @@
 import { Heart } from "lucide-react";
-import logo from "@/assets/logo.jpeg";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,9 +8,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Kannur Gardens" className="h-10 w-10 rounded-full object-cover" />
-              <span className="font-heading text-xl text-background">Kannur Gardens</span>
+            <div className="flex flex-col items-start gap-4 mb-8">
+              <img src={logo} alt="Kannur Gardens" className="h-28 w-auto object-contain" />
+              <span className="font-heading text-3xl tracking-wide text-background">Kannur Gardens</span>
             </div>
             <p className="font-body text-sm text-background/60 leading-relaxed">
               Luxury Event Venue in Kannur, Kerala. Creating timeless celebrations since 2015.
@@ -37,9 +37,9 @@ const Footer = () => {
           <div>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-background/40 mb-4">Contact</p>
             <div className="space-y-3 font-body text-sm text-background/70">
-              <p>NH 66, Kannur, Kerala 670001</p>
-              <a href="tel:+919876543210" className="block hover:text-primary transition-colors">+91 98765 43210</a>
-              <a href="mailto:info@kannurgardens.com" className="block hover:text-primary transition-colors">info@kannurgardens.com</a>
+              <p>Thekilepeedika, Thazhe Chovva, Kannur 670007</p>
+              <a href="tel:+919074771838" className="block hover:text-primary transition-colors">+91 90747 71838</a>
+              <a href="mailto:kannurgardens@gmail.com" className="block hover:text-primary transition-colors">kannurgardens@gmail.com</a>
             </div>
           </div>
         </div>
