@@ -1,7 +1,15 @@
-import { Phone, CalendarDays } from "lucide-react";
+"use client";
+
+import { Phone, CalendarDays, Snowflake, Trees, Car } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { motion } from "framer-motion";
-import heroImg from "@/assets/hero-wedding.jpg";
+import Image from "next/image";
+
+const highlights = [
+  { icon: Snowflake, label: "Indoor AC Banquet Hall" },
+  { icon: Trees, label: "Outdoor Garden Wedding Space" },
+  { icon: Car, label: "Parking for 200+ Cars" },
+];
 
 const HeroSection = () => {
   return (
@@ -19,36 +27,57 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-body text-xs md:text-sm tracking-[0.3em] uppercase text-primary mb-4"
             >
-              Luxury Event Venue • Kannur
+              Premium Event Venue • Kannur, Kerala
             </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-foreground leading-tight mb-8"
+              className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-foreground leading-tight mb-6"
             >
-              Best Wedding Venue in Kannur for Grand &{" "}
-              <span className="text-primary italic">Elegant</span> Celebrations
+              Luxury Wedding &{" "}
+              <span className="text-primary italic">Event Venue</span> in Kannur
             </motion.h1>
 
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="origin-left w-20 h-[2px] bg-primary mb-8 mx-auto lg:mx-0"
+              className="origin-left w-20 h-[2px] bg-primary mb-6 mx-auto lg:mx-0"
             />
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="font-body text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed mb-10 mx-auto lg:mx-0"
+              className="font-body text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed mb-6 mx-auto lg:mx-0"
             >
               One of the most sought-after wedding venues in Kannur, offering a perfect combination
-              of luxury, space, and natural beauty.
+              of luxury, space, and natural beauty for up to 1000 guests.
             </motion.p>
 
+            {/* Highlight Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.85 }}
+              className="flex flex-wrap gap-3 mb-8 justify-center lg:justify-start"
+            >
+              {highlights.map((h) => (
+                <div
+                  key={h.label}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary/8 border border-primary/15 rounded-full"
+                >
+                  <h.icon className="w-4 h-4 text-primary" />
+                  <span className="font-body text-xs md:text-sm tracking-wide text-foreground/80">
+                    {h.label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -57,22 +86,25 @@ const HeroSection = () => {
             >
               <a
                 href="tel:+919074771838"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary text-primary-foreground font-body text-xs sm:text-sm tracking-widest uppercase rounded-sm hover:bg-primary/90 transition-all duration-300 w-full lg:w-auto"
+                id="hero-call-btn"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary text-primary-foreground font-body text-xs sm:text-sm tracking-widest uppercase rounded-sm hover:bg-primary/90 transition-all duration-300 w-full lg:w-auto shadow-md hover:shadow-lg"
               >
                 <Phone className="w-4 h-4" />
                 Call Now
               </a>
               <a
-                href="https://wa.me/919074771838?text=Hello!%20I%20am%20interested%20in%20knowing%20more%20about%20the%20services%20at%20Kannur%20Gardens."
+                href="https://wa.me/919074771838?text=Hello!%20I%20am%20interested%20in%20booking%20Kannur%20Gardens%20for%20my%20event."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 border border-border text-foreground font-body text-xs sm:text-sm tracking-widest uppercase rounded-sm hover:bg-accent transition-all duration-300 w-full lg:w-auto"
+                id="hero-whatsapp-btn"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] text-white font-body text-xs sm:text-sm tracking-widest uppercase rounded-sm hover:bg-[#20bd5a] transition-all duration-300 w-full lg:w-auto shadow-md hover:shadow-lg"
               >
                 <WhatsAppIcon className="w-4 h-4 fill-current" />
                 WhatsApp
               </a>
               <a
                 href="#contact"
+                id="hero-book-btn"
                 className="hidden lg:inline-flex items-center justify-center gap-2 px-6 py-3 border border-border text-foreground font-body text-sm tracking-widest uppercase rounded-sm hover:bg-accent transition-all duration-300"
               >
                 <CalendarDays className="w-4 h-4" />
@@ -89,10 +121,14 @@ const HeroSection = () => {
             className="order-1 lg:order-2 relative"
           >
             <div className="relative rounded-sm overflow-hidden shadow-[0_25px_80px_-20px_hsl(var(--primary)/0.25)]">
-              <img
-                src={heroImg}
-                alt="Kannur Gardens luxury wedding venue with lush tropical gardens"
+              <Image
+                src="/images/hero-wedding.jpg"
+                alt="Kannur Gardens luxury wedding venue with decorated outdoor garden setup and floral mandap in Kannur Kerala"
+                width={800}
+                height={600}
                 className="w-full h-[350px] md:h-[500px] lg:h-[600px] object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
               />
               {/* Subtle overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" />
@@ -102,7 +138,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

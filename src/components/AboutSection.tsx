@@ -1,5 +1,7 @@
+"use client";
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import gallery3 from "@/assets/gallery-3.jpg";
+import Image from "next/image";
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -11,11 +13,14 @@ const AboutSection = () => {
           {/* Image */}
           <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
             <div className="relative">
-              <img
-                src={gallery3}
-                alt="Kannur Gardens aerial view"
+              <Image
+                src="/images/gallery-3.jpg"
+                alt="Aerial view of Kannur Gardens wedding venue with landscaped lawns and traditional Kerala architecture"
+                width={700}
+                height={500}
                 className="w-full h-[500px] object-cover rounded-sm"
                 loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-primary rounded-sm hidden lg:block" />
             </div>
@@ -24,10 +29,10 @@ const AboutSection = () => {
           {/* Text */}
           <div className={`transition-all duration-1000 delay-200 text-center lg:text-left ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}>
             <p className="font-body text-sm tracking-[0.3em] uppercase text-primary mb-4">
-              About Us
+              About Kannur Gardens
             </p>
             <h2 className="section-title mb-6 mx-auto lg:mx-0">
-              Where Dreams Find Their Perfect Setting
+              The Premier Wedding & Event Venue in Kannur
             </h2>
             <div className="gold-separator mb-8 lg:mx-0" />
             <p className="section-subtitle mb-6 mx-auto lg:mx-0">
@@ -40,7 +45,7 @@ const AboutSection = () => {
               {[
                 { label: "Largest Venue in Kannur" },
                 { label: "Indoor & Outdoor Options" },
-                { label: "Parking for 200 Cars" },
+                { label: "Parking for 200+ Cars" },
                 { label: "Traditional & Modern" },
                 { label: "Easy Town Access" },
                 { label: "Premium Facilities" },

@@ -1,5 +1,5 @@
 import { Heart } from "lucide-react";
-import logo from "@/assets/logo.png";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -9,7 +9,13 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex flex-col items-start gap-4 mb-8">
-              <img src={logo} alt="Kannur Gardens" className="h-28 w-auto object-contain" />
+              <Image
+                src="/images/logo.png"
+                alt="Kannur Gardens"
+                width={112}
+                height={112}
+                className="h-28 w-auto object-contain"
+              />
               <span className="font-heading text-3xl tracking-wide text-background">Kannur Gardens</span>
             </div>
             <p className="font-body text-sm text-background/60 leading-relaxed">
@@ -21,13 +27,20 @@ const Footer = () => {
           <div>
             <p className="font-body text-xs tracking-[0.3em] uppercase text-background/40 mb-4">Quick Links</p>
             <div className="space-y-3">
-              {["About", "Spaces", "Amenities", "Gallery", "Contact"].map((link) => (
+              {[
+                { label: "About", href: "#about" },
+                { label: "Venues", href: "#spaces" },
+                { label: "Amenities", href: "#amenities" },
+                { label: "Gallery", href: "#gallery" },
+                { label: "FAQ", href: "#faq" },
+                { label: "Contact", href: "#contact" },
+              ].map((link) => (
                 <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
+                  key={link.label}
+                  href={link.href}
                   className="block font-body text-sm text-background/70 hover:text-primary transition-colors"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </div>

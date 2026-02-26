@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Instagram, Facebook } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import logo from "@/assets/logo.png";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
@@ -28,9 +30,10 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "About", href: "#about" },
-    { label: "Spaces", href: "#spaces" },
+    { label: "Venues", href: "#spaces" },
     { label: "Amenities", href: "#amenities" },
     { label: "Gallery", href: "#gallery" },
+    { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -46,10 +49,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between h-24">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 md:gap-4 group relative z-[110]">
-          <img
-            src={logo}
+          <Image
+            src="/images/logo.png"
             alt="Kannur Gardens"
+            width={80}
+            height={80}
             className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            priority
           />
           <span className="font-heading text-xl md:text-3xl tracking-wide text-foreground">
             Kannur Gardens

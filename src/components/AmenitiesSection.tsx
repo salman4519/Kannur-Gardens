@@ -1,3 +1,5 @@
+"use client";
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Flower2, UtensilsCrossed, CalendarCheck, Car, Music, Camera, Sparkles, Shield } from "lucide-react";
 

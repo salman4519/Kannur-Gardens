@@ -1,24 +1,19 @@
+"use client";
+
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { X } from "lucide-react";
-import heroImg from "@/assets/hero-wedding.jpg";
-import orchidHall from "@/assets/orchid-hall.jpg";
-import jasmineLawn from "@/assets/jasmine-lawn.jpg";
-import lotusPavilion from "@/assets/lotus-pavilion.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
+import Image from "next/image";
 
 const images = [
-  { src: heroImg, alt: "Grand outdoor wedding setup" },
-  { src: orchidHall, alt: "Orchid Hall banquet" },
-  { src: gallery1, alt: "Elegant dinner reception" },
-  { src: gallery2, alt: "Traditional mandap decoration" },
-  { src: jasmineLawn, alt: "Jasmine Lawn ceremony" },
-  { src: gallery4, alt: "Floral entrance archway" },
-  { src: gallery3, alt: "Aerial venue view" },
-  { src: lotusPavilion, alt: "Lotus Pavilion stage" },
+  { src: "/images/hero-wedding.jpg", alt: "Grand outdoor wedding decoration setup at Kannur Gardens venue in Kannur Kerala" },
+  { src: "/images/orchid-hall.jpg", alt: "Orchid Hall AC banquet hall with elegant lighting and stage at Kannur Gardens" },
+  { src: "/images/gallery-1.jpg", alt: "Luxury dinner reception with floral table decorations at Kannur Gardens wedding venue" },
+  { src: "/images/gallery-2.jpg", alt: "Traditional Hindu wedding mandap decoration at Kannur Gardens Kerala" },
+  { src: "/images/jasmine-lawn.jpg", alt: "Jasmine Lawn outdoor garden wedding ceremony at Kannur Gardens with lush greenery" },
+  { src: "/images/gallery-4.jpg", alt: "Floral entrance archway and pathway decoration at Kannur Gardens event venue" },
+  { src: "/images/gallery-3.jpg", alt: "Aerial view of Kannur Gardens wedding venue with lush green lawns and Kerala-style buildings" },
+  { src: "/images/lotus-pavilion.jpg", alt: "Lotus Pavilion grand event stage setup for large wedding at Kannur Gardens" },
 ];
 
 const GallerySection = () => {
@@ -30,10 +25,10 @@ const GallerySection = () => {
       <div ref={ref} className="max-w-7xl mx-auto">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <p className="font-body text-sm tracking-[0.3em] uppercase text-primary mb-4">Gallery</p>
-          <h2 className="section-title mb-4">Moments of Grandeur</h2>
+          <h2 className="section-title mb-4">Real Weddings at Kannur Gardens</h2>
           <div className="gold-separator mb-6" />
           <p className="section-subtitle mx-auto">
-            A glimpse into the celebrations that have graced our venue.
+            A glimpse into the stunning celebrations that have graced our venue.
           </p>
         </div>
 
@@ -42,17 +37,19 @@ const GallerySection = () => {
           {images.map((img, i) => (
             <div
               key={i}
-              className={`break-inside-avoid cursor-pointer group overflow-hidden rounded-sm transition-all duration-1000 ${
-                isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-              }`}
+              className={`break-inside-avoid cursor-pointer group overflow-hidden rounded-sm transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                }`}
               style={{ transitionDelay: isVisible ? `${i * 100}ms` : "0ms" }}
               onClick={() => setLightbox(i)}
             >
-              <img
+              <Image
                 src={img.src}
                 alt={img.alt}
+                width={400}
+                height={300}
                 className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />
             </div>
           ))}
@@ -68,13 +65,17 @@ const GallerySection = () => {
           <button
             onClick={() => setLightbox(null)}
             className="absolute top-6 right-6 text-ivory hover:text-primary transition-colors"
+            aria-label="Close gallery lightbox"
           >
             <X className="w-8 h-8" />
           </button>
-          <img
+          <Image
             src={images[lightbox].src}
             alt={images[lightbox].alt}
+            width={1200}
+            height={800}
             className="max-w-full max-h-[85vh] object-contain rounded-sm animate-scale-in"
+            sizes="95vw"
           />
         </div>
       )}
