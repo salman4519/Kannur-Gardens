@@ -62,7 +62,7 @@ const Footer = () => {
             © 2026 Kannur Gardens. All rights reserved.
           </p>
           <p className="font-body text-xs text-background/40 flex items-center gap-1">
-            Made with <Heart className="w-3 h-3 text-primary fill-primary" /> in Kerala
+            Made with <a href="https://ciltriq.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">Ciltriq Technologies</a>
           </p>
         </div>
       </div>

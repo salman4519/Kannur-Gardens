@@ -4,6 +4,7 @@ import { Phone, CalendarDays, Snowflake, Trees, Car } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import OpeningSoonModal from "./OpeningSoonModal";
 
 const highlights = [
   { icon: Snowflake, label: "Indoor AC Banquet Hall" },
@@ -14,6 +15,8 @@ const highlights = [
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      <OpeningSoonModal />
+
       {/* Decorative accent */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-40" />
 

@@ -173,7 +173,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
+        <html lang="en" className={`${playfair.variable} ${dmSans.variable} overflow-x-hidden`}>
             <head>
                 <link rel="dns-prefetch" href="https://wa.me" />
                 <script
@@ -185,7 +185,7 @@ export default function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                 />
             </head>
-            <body className="antialiased">
+            <body className="antialiased overflow-x-hidden">
                 <Providers>
                     <TooltipProvider>
                         <Toaster />
