@@ -40,7 +40,7 @@ const HeroSection = () => {
               className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-foreground leading-tight mb-6"
             >
               Luxury Wedding &{" "}
-              <span className="text-primary italic">Event Venue</span> in Kannur
+              Event Venue in Kannur
             </motion.h1>
 
             <motion.div
